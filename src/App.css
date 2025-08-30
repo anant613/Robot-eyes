@@ -1,29 +1,106 @@
 .robot {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #111;
-  }
-  
-  .eye {
-    width: 100px;
-    height: 100px;
-    margin: 0 20px;
-    background:#1F51FF;
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .pupil {
-    width: 40px;
-    height: 40px;
-    background: black;
-    border-radius: 50%;
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    transition: transform 0.05s linear;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at center, #0a0a0a, #000);
+}
+
+.head {
+  width: 300px;
+  height: 400px;
+  background: linear-gradient(145deg, #f5f5f5, #dcdcdc);
+  border-radius: 50% / 55%;
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 255, 255, 0.3), inset 0 0 20px #aaa;
+  overflow: hidden;
+}
+
+/* Eyes */
+.eye {
+  width: 80px;
+  height: 80px;
+  background: #111;
+  border-radius: 50%;
+  position: absolute;
+  top: 120px;
+  box-shadow: inset 0 0 30px #00f0ff;
+  overflow: hidden;
+}
+.left-eye { left: 50px; }
+.right-eye { right: 50px; }
+
+.pupil {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #00f0ff, #003344);
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transition: transform 0.05s linear;
+  box-shadow: 0 0 15px #00f0ff;
+}
+
+/* Blinking */
+.eye.blink {
+  height: 10px;
+  top: 150px;
+  transition: height 0.2s ease-in-out;
+}
+
+/* Mouth base */
+.mouth {
+  width: 150px;
+  height: 30px;
+  background: linear-gradient(to right, #333, #111);
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 8px;
+  box-shadow: 0 0 15px #00f0ff inset;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Talking animation */
+.mouth.talking {
+  height: 60px;
+  background: linear-gradient(to right, #00f0ff, #003344);
+  box-shadow: 0 0 20px #00f0ff inset, 0 0 15px #00f0ff;
+}
+
+/* Emotions */
+.mouth.happy {
+  border-radius: 50%/100%;
+  height: 50px;
+}
+.mouth.angry {
+  transform: translateX(-50%) rotate(180deg);
+  background: linear-gradient(to right, #f00, #600);
+}
+.mouth.surprised {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+}
+
+/* Side lights */
+.side-light {
+  width: 20px;
+  height: 60px;
+  background: #00f0ff;
+  position: absolute;
+  top: 150px;
+  border-radius: 10px;
+  animation: pulse 2s infinite alternate;
+}
+.left { left: -30px; }
+.right { right: -30px; }
+
+@keyframes pulse {
+  from { opacity: 0.4; box-shadow: 0 0 10px #00f0ff; }
+  to { opacity: 1; box-shadow: 0 0 30px #00f0ff; }
+}
+
   
