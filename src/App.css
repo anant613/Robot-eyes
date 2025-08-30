@@ -1,0 +1,29 @@
+.robot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #111;
+  }
+  
+  .eye {
+    width: 100px;
+    height: 100px;
+    margin: 0 20px;
+    background:#1F51FF;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pupil {
+    width: 40px;
+    height: 40px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    transition: transform 0.05s linear;
+  }
+  

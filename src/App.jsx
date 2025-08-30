@@ -1,28 +1,38 @@
 import { useEffect, useState } from "react";
-import "./App.css"
+import "./App.css";
 
 function App() {
-  const {eyePosition , setEyePosition} = useState({ x : 0 , y : 0})
+  const [eyePosition, setEyePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const mouseMove = (e) => {
+      setEyePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", mouseMove);
+    return () => window.removeEventListener("mousemove", mouseMove);
+  }, []);
+
+  return (
+    <div className="robot">
+      <div className="eye left-eye">
+        <div
+          className="pupil"
+          style={{
+            transform: `translate(${eyePosition.x / 50}px, ${eyePosition.y / 50}px)`,
+          }}
+        ></div>
+      </div>
+      <div className="eye right-eye">
+        <div
+          className="pupil"
+          style={{
+            transform: `translate(${eyePosition.x / 50}px, ${eyePosition.y / 50}px)`,
+          }}
+        ></div>
+      </div>
+    </div>
+  );
 }
 
-//tracking mouse moment 
-
-useEffect(() => {
-   const mousemov = () => {setEyePosition({ x : e.client_X , y : e.client_Y});
-  };
-
-   window.addEventListener("mousemove" , mousemov);
-   return () => window.removeEventListener("mousemove" , mousemov);
-},[])
-
-//constructing
-return (
-  <div className = "robot">
-    <div className = "eyes">
-      <div
-         className = "pupil"
-         style = ({
-           transform : `translate`
-         })
-
-)
+export default App;
